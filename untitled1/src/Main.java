@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Map<String, Aluno> alunos = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
+        Map<String, Aluno> alunos = new HashMap<>();
 
         boolean programa = true;
 
@@ -28,7 +28,7 @@ public class Main {
                 String dataNascimento = scanner.next();
                 alunos.put(cpf, new Aluno(cpf, nome, dataNascimento));
             } else if (opcao == 2){
-                alunos.forEach((k, v) -> System.out.println("cpf = " + k +"\n"+ "nome e data de nascimento = " + v.getCpf() + v.getNome() + "\n"));
+                alunos.forEach((k, v) -> System.out.println("CPF: " + k +"\n"+ "NOME: " + v.getNome() +"\n"+ "DATA DE NASCIMENTO: "+ v.getDataNascimento() + "\n"));
             } else if(opcao == 3){
                 System.out.println("Digite o CPF do aluno:");
                 String cpf = scanner.next();
