@@ -12,7 +12,7 @@ import static java.nio.file.StandardOpenOption.APPEND;
 public class DadosQuestoesArquivo implements DadosQuestao{
     @Override
     public void salvar(Questao questao) {
-        Path filePath = Paths.get("dados.txt");
+        Path filePath = Paths.get("dados.bin");
         List<Questao> questoes = new ArrayList<Questao>();
         if(!Files.exists(filePath)){
             try {
@@ -36,7 +36,7 @@ public class DadosQuestoesArquivo implements DadosQuestao{
     @Override
     public List<Questao> getQuestoes() {
         List<Questao> questoes = new ArrayList<Questao>();
-        Path filePath = Paths.get("dados.txt");
+        Path filePath = Paths.get("dados.bin");
         if(Files.exists(filePath)){
             try {
                 try(var fis = Files.newInputStream(filePath);
