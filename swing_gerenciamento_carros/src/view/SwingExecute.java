@@ -1,6 +1,5 @@
 package view;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
 
 import javax.swing.*;
 
@@ -11,7 +10,7 @@ public class SwingExecute {
     private JTabbedPane tab;
 
     public SwingExecute(){
-        FlatDarculaLaf.setup();
+
         frame = new JFrame("Gerenciador de Veículos");
         tab = new JTabbedPane();
 
