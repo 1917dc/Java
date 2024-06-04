@@ -10,6 +10,6 @@ public class Main {
 
         generos.add(6);
         var db = new DatabaseControl();
-        db.insertMovie("The Social Network", "2010", "David Fincher", generos);
+        db.selectAllMovies();
     }
 }

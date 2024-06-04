@@ -9,7 +9,8 @@ public class DatabaseControl {
     private static final String path = "jdbc:sqlite:moviesDB.db";
     private Connection conn = null;
 
-    public void selectAllMovies(String tableName) {
+    public void selectAllMovies() {
+        String tableName = "Filme";
         try {
             conn = DriverManager.getConnection(path);
             Statement stmt = conn.createStatement();
