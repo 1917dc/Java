@@ -43,15 +43,21 @@ public class DatabaseControl {
         }
     }
 
-    public void insertMovie(String titulo, String ano, int diretor_id, List<Integer> generos) {
+    public void insertMovie(String titulo, String ano, String nomeDiretor, List<Integer> generos) {
         try {
             String insertMovieSQL = "INSERT INTO Filme(titulo, ano, diretor_id) VALUES(?,?,?)";
             conn = DriverManager.getConnection(path);
+
+            Statement stmtDiretor = conn.createStatement();
+            String selectDiretorSQL = String.format("SELECT id FROM Diretor WHERE nome = '%s';", nomeDiretor);
+            ResultSet rsDiretor = stmtDiretor.executeQuery(selectDiretorSQL);
+            int diretor_id = rsDiretor.getInt("id");
+
             PreparedStatement pstmtFilme = conn.prepareStatement(insertMovieSQL);
             pstmtFilme.setString(1, titulo);
             pstmtFilme.setString(2, ano);
             pstmtFilme.setInt(3, diretor_id);
-            pstmtFilme.executeUpdate();
+            //pstmtFilme.executeUpdate();
 
             Statement stmt = conn.createStatement();
             String selectFilmeSQL = String.format("SELECT id FROM Filme WHERE titulo = '%s';", titulo);
@@ -62,10 +68,8 @@ public class DatabaseControl {
                 ResultSet rs = stmt.executeQuery(selectFilmeSQL);
                 pstmtGeneroFilme.setInt(1, generosInsert);
                 pstmtGeneroFilme.setInt(2, rs.getInt("id"));
-                pstmtGeneroFilme.executeUpdate();
+                //pstmtGeneroFilme.executeUpdate();
             }
-
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
