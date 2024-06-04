@@ -58,7 +58,7 @@ public class DatabaseControl {
             pstmtFilme.setString(1, titulo);
             pstmtFilme.setString(2, ano);
             pstmtFilme.setInt(3, diretor_id);
-            //pstmtFilme.executeUpdate();
+            pstmtFilme.executeUpdate();
 
             Statement stmt = conn.createStatement();
             String selectFilmeSQL = String.format("SELECT id FROM Filme WHERE titulo = '%s';", titulo);
@@ -69,7 +69,7 @@ public class DatabaseControl {
                 ResultSet rs = stmt.executeQuery(selectFilmeSQL);
                 pstmtGeneroFilme.setInt(1, generosInsert);
                 pstmtGeneroFilme.setInt(2, rs.getInt("id"));
-                //pstmtGeneroFilme.executeUpdate();
+                pstmtGeneroFilme.executeUpdate();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
